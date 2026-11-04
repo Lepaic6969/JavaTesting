@@ -16,8 +16,8 @@ jobs:
     - name: Configurar Java y Maven en Ubuntu
       uses: actions/setup-java@v6
       with:
-          distribution: 'Oracle JDK'
-          java-version: 24.0.1 #Versión que tienes localmente
+          distribution: 'temurin'
+          java-version: 25
           cache: maven
 
     - name: Verificar versiones
