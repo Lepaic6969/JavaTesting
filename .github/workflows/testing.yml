@@ -1,0 +1,14 @@
+name: Testing en JUnit
+
+on:
+  push:
+    branches: ["release/**"]
+  pull_request:
+    branches: ["develop","release/**","main"]
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Hello World"
+    - run: date
