@@ -2,7 +2,7 @@ name: Testing en JUnit
 
 on:
   push:
-    branches: ["feature/**"]
+    branches: ["feature/**","bugfix/**","hotfix/**"] #Pruebas de regresión cuando agrego nueva característica o corrijo un error
   pull_request:
     branches: ["develop","release/**","main"]
 
@@ -10,5 +10,16 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Hello World"
-    - run: date
+    - name: Descargar repositorio
+      uses: actions/checkout@v7 #Descarga el código del repo al runner de ubuntu
+
+    - name: Configurar Java y Maven en Ubuntu
+      uses: actions/setup-java@v6
+      with:
+          java-version: 24.0.1 #Versión que tienes localmente
+          cache: maven
+
+    - name: Verificar versiones
+      run: |
+        java --version
+        mvn -version
